@@ -61,7 +61,7 @@ namespace DecimalBinary
         {
             //Convert.ToInt32("1001101", 2).ToString();
             //https://dotnettutorials.net/lesson/binary-to-decimal-conversion-in-csharp/
-            int decimalValue = 0;
+            int n = 0;
             int base1 = 1;
 
             Console.WriteLine("Enter a binary number to convert:");
@@ -70,10 +70,10 @@ namespace DecimalBinary
             {
                 int remainder = input % 10;
                 input = input / 10;
-                decimalValue += remainder * base1;
+                n += remainder * base1;
                 base1 = base1 * 2;
             }
-            answer = decimalValue.ToString();
+            answer = n.ToString();
             Console.WriteLine("Answer: " + answer);
             Menu();
         }
