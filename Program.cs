@@ -5,7 +5,6 @@ namespace DecimalBinary
     class Program
     {
         static int input;
-        static int n;
         static string answer;
         
 
@@ -16,25 +15,27 @@ namespace DecimalBinary
 
         private static void Menu()
         {
-            int prompt;
+            int choice;
+
             answer = "";
             Console.WriteLine(" ");
             Console.WriteLine("Enter a number to select your choice:");
             Console.WriteLine("1. Convert to Binary");
             Console.WriteLine("2. Convert to Decimal");
             Console.WriteLine("3. Quit");
-            prompt = int.Parse(Console.ReadLine());
-            if (prompt == 1)
+            choice = int.Parse(Console.ReadLine());
+            if (choice == 1)
             {
                 DecimalToBinary();
-                prompt = 0;
+
+                choice = 0;
             }
-            if (prompt == 2)
+            if (choice == 2)
             {
                 BinaryToDecimal();
-                prompt = 0;
+                choice = 0;
             }
-            if (prompt == 3)
+            if (choice == 3)
             {
                 return;
             }
@@ -43,7 +44,8 @@ namespace DecimalBinary
         private static void DecimalToBinary()
         {
             //string answer = Convert.ToString(input, 2);
-            
+            int n;
+
             Console.WriteLine("Enter a decimal number to convert:");
             input = int.Parse(Console.ReadLine());
             while(input != 0)
@@ -58,10 +60,21 @@ namespace DecimalBinary
         private static void BinaryToDecimal()
         {
             //Convert.ToInt32("1001101", 2).ToString();
+            //https://dotnettutorials.net/lesson/binary-to-decimal-conversion-in-csharp/
+            int n;
+            int decimalValue = 0;
+            int base1 = 1;
 
             Console.WriteLine("Enter a binary number to convert:");
-            answer = Convert.ToInt32(Console.ReadLine(), 2).ToString();
-
+            input = int.Parse(Console.ReadLine());
+            while (input > 0)
+            {
+                int remainder = input % 10;
+                input = input / 10;
+                decimalValue += remainder * base1;
+                base1 = base1 * 2;
+            }
+            answer = decimalValue.ToString();
             Console.WriteLine("Answer: " + answer);
             Menu();
         }
